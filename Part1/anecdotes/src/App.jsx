@@ -23,12 +23,17 @@ const App = () => {
     setSelected(randomnum);
     console.log(randomnum)
   }
-
+const maxVotes =  Math.max(...votes)
+const index = votes.indexOf(maxVotes)
   return(
     <div>
-       <p> {anecdotes[selected]} has {votes[selected]} Votes</p>
+       <p> {anecdotes[selected]}</p>
         <button onClick={() => newQuote()}>Update</button>
         <button onClick={() => updateVote()}>Vote</button>
+        
+        <h1>Most Voted Quote</h1>
+        <p>{anecdotes[index]}</p>
+        <p>Votes: {maxVotes}</p>
     </div>
   )
 };
