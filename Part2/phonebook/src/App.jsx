@@ -40,13 +40,6 @@ const App = () => {
           setNewName('')
           setNewNumber('')
         })
-      // axios
-      //   .post('http://localhost:3001/persons',personObject)
-      //   .then(response => {
-      //     setPersons(persons.concat(response.data))
-      //     setNewName('')
-      //     setNewNumber('')
-      //   })
       
     }
   }
@@ -62,6 +55,13 @@ const App = () => {
 
   const handleFilter = (event) => {
     setFilterVal(event.target.value)
+  }
+  const handleDelete = (id) => {
+    phoneService
+      .deletePhone(id)
+      .then( () => {
+        setPersons(persons.filter(p => p.id !== id))
+      })
   }
 
 
@@ -81,7 +81,7 @@ const App = () => {
         />
      
       <h2>Numbers</h2>
-      <Persons persons={persons} filterVal={filterVal}/>
+      <Persons persons={persons} filterVal={filterVal} handleDelete = {handleDelete}/>
      
     </div>
   )

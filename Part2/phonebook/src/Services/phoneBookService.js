@@ -9,5 +9,9 @@ const create = (personObject) => {
     const request = axios.post(baseUrl,personObject)
     return request.then(response => response.data)
 }
+const deletePhone = (id) => {
+    const request = axios.delete(`${baseUrl}/${id}`)
+    return request.then(response => response.data)
+}
 
-export default {getAll, create}
+export default {getAll, create, deletePhone}
